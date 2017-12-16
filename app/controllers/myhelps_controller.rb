@@ -1,0 +1,2 @@
+class MyhelpsController < ApplicationController
+end

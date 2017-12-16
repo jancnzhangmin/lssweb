@@ -1,0 +1,2 @@
+module SucaisHelper
+end

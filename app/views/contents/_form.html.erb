@@ -1,0 +1,78 @@
+<script>
+
+    $(document).ready(function(){
+
+     $('#contentkeywordselect').change(function(){
+
+         $('#contentkeywordid').val($('#contentkeywordselect').val());
+     });
+
+
+  });
+
+    function proreadURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#contentimg').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<div class="col-md-12 ibox ibox-content">
+  <div class="ibox-content form-horizontal m-t">
+    <div class="form-group">
+      <%= form_for(@content,:html => {:class=>'form-horizontal m-t',:multipart => true}) do |f| %>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">标题：</label>
+            <div class="col-sm-8">
+              <%= f.text_field :title,class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">内容区域：</label>
+            <div class="col-sm-8">
+              <%= f.hidden_field :contentkeyword_id,class:"form-control",id:'contentkeywordid' %>
+              <select class="form-control" id="contentkeywordselect">
+                <option value="0">请选择内容区域</option>
+                <% @contentkeywords.each do |contentkeyword| %>
+                    <option value=<%=contentkeyword.id %>><%=contentkeyword.name %></option>
+                    <% end %>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">简介：</label>
+            <div class="col-sm-8">
+              <%= f.text_area :summary,class:"form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">列表图片：</label>
+            <div class="col-sm-8">
+              <%= f.file_field :contentimg,class:"form-control",:onchange => "proreadURL(this)" %>
+              <img id="contentimg" width="600px"  src=<%= @content.contentimg.url %> >
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">内容：</label>
+            <div class="col-sm-8">
+              <%= f.kindeditor :content,class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"></label>
+            <div class="col-sm-8 text-right">
+              <%= f.submit '确定',class: "btn btn-primary"%>&nbsp;<%= link_to "返回",contents_path,class: "btn btn-primary " %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container bs-docs-container">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">素材内容</div>
+    <div class="panel-body">
+
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <th class="text-center">名称</th>
+      <th class="text-center">素材</th>
+      <th class="text-center">素材地址</th>
+      <th class="text-center">创建日期</th>
+      <th class="text-center">操作</th>
+      <%@sucais.each do |sucai| %>
+          <tr>
+            <td>
+              <%= sucai.title %>
+            </td>
+            <td>
+              <img width="100" src=<%= sucai.sucaiimg.url %>>
+
+            </td>
+            <td>
+              <%= sucai.sucaiimg.url %>
+            </td>
+            <td>
+              <%= sucai.created_at %>
+            </td>
+            <td>
+              <%= link_to '编辑',edit_sucai_path(sucai) %>
+              <%= link_to '删除',sucai, method: :delete, data: { confirm: '确认删除?' } %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+
+  </div>
+  <div class="text-right">
+    <%= link_to "新增",new_sucai_path,class: "btn btn-primary" %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container bs-docs-container">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">网站内容</div>
+    <div class="panel-body">
+
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <th class="text-center">名称</th>
+      <th class="text-center">创建日期</th>
+      <th class="text-center">操作</th>
+      <%@contents.each do |content| %>
+          <tr>
+            <td>
+              <%= content.title %>
+            </td>
+
+            <td>
+              <%= content.created_at %>
+            </td>
+            <td>
+              <%= link_to '编辑',edit_content_path(content) %>
+              <%= link_to '删除',content, method: :delete, data: { confirm: '确认删除?' } %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+
+  </div>
+  <div class="text-right">
+    <%= link_to "新增",new_content_path,class: "btn btn-primary" %>
+  </div>
+</div>
