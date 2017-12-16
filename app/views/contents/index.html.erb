@@ -9,6 +9,7 @@
     <!-- Table -->
     <table class="table">
         <th class="text-center">名称</th>
+      <th class="text-center">分类</th>
       <th class="text-center">创建日期</th>
       <th class="text-center">操作</th>
       <%@contents.each do |content| %>
@@ -16,9 +17,11 @@
             <td>
               <%= content.title %>
             </td>
-
             <td>
-              <%= content.created_at %>
+              <%= content.contentkeyword.name %>
+            </td>
+            <td>
+              <%= content.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
             </td>
             <td>
               <%= link_to '编辑',edit_content_path(content) %>

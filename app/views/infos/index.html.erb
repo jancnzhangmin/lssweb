@@ -1,0 +1,111 @@
+<%= render 'layerbegin' %>
+
+
+<style>
+    .nav-tabs {
+        border-bottom: 0 none;
+        background: #ffffff;
+    }
+    .nav-tabs li a {
+        background: transparent;
+        border-radius: 0;
+        font-size: 16px;
+        border: none;
+        color: #333;
+        padding: 12px 22px;
+    }
+    .nav-tabs li.active a, .tab .nav-tabs li.active a i {
+        border: 0 none;
+        background:#0081cc;
+        color: #fff;
+    }
+
+    .nav-tabs li.active a:hover, .tab .nav-tabs li.active a:hover  {
+        border: 0 none;
+        background:#0081cc;
+        color: #fff;
+    }
+
+    .nav-tabs li.active a:visited, .tab .nav-tabs li.active a:visited  {
+        border: 10 none;
+        background:#0081cc;
+        color: #fff;
+    }
+
+
+
+</style>
+
+<div class="container" style="margin-top: 120px;">
+
+  <!-- Nav tabs -->
+  <div class="col-sm-3">
+    <ul class="nav nav-tabs nav-stacked" role="tablist">
+      <li role="presentation" class="active"><a href="#install" aria-controls="home" role="tab" data-toggle="tab">安装知识</a></li>
+      <li role="presentation"><a href="#news" aria-controls="profile" role="tab" data-toggle="tab">企业资讯</a></li>
+    </ul>
+  </div>
+
+  <!-- Tab panes -->
+
+  <div class="tab-content col-md-8">
+    <div role="tabpanel" class="tab-pane active" id="install">
+      <% @installs.each do |install| %>
+
+          <div class="media" >
+            <div class="media-left" >
+              <a href=<%= content_path(install) %>>
+                <img class="media-object" style="width: 60px;" src=<%=install.contentimg.url %>>
+              </a>
+
+            </div>
+            <a class="media-body" href=<%= content_path(install) %>>
+            <div class="media-body" style="border-bottom: 1px solid #0081cc;">
+              <div class="media-heading">
+                <span><b><%=install.title %></b></span>
+                            <span class="pull-right media-heading">
+              <%=install.created_at.strftime('%Y-%m-%d %H:%M:%S')  %>
+                  </span>
+              </div>
+
+<span class="text-muted">
+  <%= install.summary %>
+</span>
+
+            </div>
+            </a>
+          </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="news">
+      <% @enterprices.each do |enterprice| %>
+
+          <div class="media" >
+            <div class="media-left" >
+              <a href=<%= content_path(enterprice) %>>
+                <img class="media-object" style="width: 60px;" src=<%=enterprice.contentimg.url %>>
+              </a>
+
+            </div>
+            <a class="media-body" href=<%= content_path(enterprice) %>>
+              <div class="media-body" style="border-bottom: 1px solid #0081cc;">
+                <div class="media-heading">
+                  <span><b><%=enterprice.title %></b></span>
+                            <span class="pull-right media-heading">
+              <%=enterprice.created_at.strftime('%Y-%m-%d %H:%M:%S')  %>
+                  </span>
+                </div>
+
+<span class="text-muted">
+  <%= enterprice.summary %>
+</span>
+
+              </div>
+            </a>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

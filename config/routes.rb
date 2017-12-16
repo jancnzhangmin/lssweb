@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :sliderkeywords
   resources :sliders
   resources :sucais
+
 end
