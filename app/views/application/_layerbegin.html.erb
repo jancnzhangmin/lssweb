@@ -74,7 +74,7 @@
 </style>
 
 <div class="navbar navbar-fixed-top" role="navigation"
-     data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0);"
+     data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);"
      data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
   <div class="container">
     <div class="navbar-header">
@@ -86,13 +86,41 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-        <li class="active"><a class="smooth" href="#section-home">首页</a></li>
-        <li><a class="smooth" href="qsjqj.html">最新资讯</a></li>
-        <li><a class="smooth" href="about.html">工程案例</a></li>
-        <li><a class="smooth" href="contact.html">用户中心</a></li>
-        <li><a class="smooth" href="contact.html">师傅中心</a></li>
-        <li><a class="smooth" href="contact.html">帮助中心</a></li>
-        <li><a class="smooth" href="contact.html">关于我们</a></li>
+        <% if request.url.include?('homes') %>
+        <li class="active"><a class="smooth" href=<%= homes_path %>>首页</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= homes_path %>>首页</a></li>
+            <% end %>
+        <% if request.url.include?('infos') %>
+            <li class="active"><a class="smooth" href=<%= infos_path %>>最新资讯</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= infos_path %>>最新资讯</a></li>
+            <% end %>
+        <% if request.url.include?('projects') %>
+            <li class="active"><a class="smooth" href=<%= projects_path %>>工程案例</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= projects_path %>>工程案例</a></li>
+            <% end %>
+        <% if request.url.include?('users') %>
+            <li class="active"><a class="smooth" href=<%= users_path %>>用户中心</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= users_path %>>用户中心</a></li>
+            <% end %>
+        <% if request.url.include?('works') %>
+            <li class="active"><a class="smooth" href=<%= works_path %>>师傅中心</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= works_path %>>师傅中心</a></li>
+            <% end %>
+        <% if request.url.include?('myhelps') %>
+            <li class="active"><a class="smooth" href=<%= myhelps_path %>>帮助中心</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= myhelps_path %>>帮助中心</a></li>
+            <% end %>
+        <% if request.url.include?('abouts') %>
+            <li class="active"><a class="smooth" href=<%= abouts_path %>>关于我们</a></li>
+            <% else %>
+            <li><a class="smooth" href=<%= abouts_path %>>关于我们</a></li>
+            <% end %>
       </ul>
     </div>
     <!--/.navbar-collapse -->

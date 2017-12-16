@@ -13,7 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require kindeditor
 //= require jquery-ui.min.js
 //= require jquery.ui.touch-punch.min.js
